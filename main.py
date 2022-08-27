@@ -4,8 +4,8 @@ import time
 import json
 import glob
 import random
+import shutil
 
-from render import render
 from twitter import tweet_pic
 
 
@@ -15,6 +15,9 @@ theme = ["cosmic horror"]
 topic = ["Cthulhu fhtagn", "ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn", "Iä! Iä! Cthulhu fhtagn!"]
 # choose one 50% of the time
 artist = ["by Monet", "by Salvadore Dali", "by Pablo Picasso", "by Mondrian", "by Klimt", "by van Gogh", "by le Corbusier", "drawn by a child"]
+
+img_dir = "img"
+archive_dir = "archive"
 
 
 def generate_prompt():
@@ -29,8 +32,7 @@ def generate_prompt():
 
 def generate_image():
 
-    dir = "img"
-    os.makedirs(dir, exist_ok=True)
+    os.makedirs(img_dir, exist_ok=True)
 
     timestamp = int(time.time())
     basename = f"{dir}/cthulhu_fhtagn_{timestamp}"
@@ -62,10 +64,11 @@ def tweet_image(prompt, filename):
 
 if __name__ == "__main__":
     if "--batch" in sys.argv:
+        from render import render
         for i in range(2000):
             generate_image()
     else:
-        txtname = random.choice(glob.glob("img/*.txt"))
+        txtname = random.choice(glob.glob(f"{img_dir}/*.txt"))
         filename = txtname.replace(".txt", ".png")
 
         with open(txtname) as f:
@@ -73,3 +76,8 @@ if __name__ == "__main__":
             prompt = d["prompt"]
 
         tweet_image(prompt, filename)
+
+        archive_dir = "archive"
+        os.makedirs(archive_dir, exist_ok=True)
+        shutil.move(txtname, txtname.replace(img_dir, archive_dir))
+        shutil.move(filename, filename.replace(img_dir, archive_dir))
