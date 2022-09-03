@@ -9,25 +9,30 @@ import shutil
 from twitter import tweet_pic
 
 
-styles = ["photorealistic", "book cover art", "impressionism", "cubism", "steam punk", "brutalism", "fractal", "abstract", "cave painting"]
-misc = ["highly detailed", "8k", "elegant", "cinematic lighting", "amazing crisp", "detail no noise", "DOF", "digital illustration", "digital art", "trending on artstation", "intricate", "epic", "high quality", "high detail", "close up", "character concept art"]
-theme = ["cosmic horror"]
-topic = ["Cthulhu fhtagn", "ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn", "Iä! Iä! Cthulhu fhtagn!"]
-# choose one 50% of the time
-artist = ["by Monet", "by Salvadore Dali", "by Pablo Picasso", "by Mondrian", "by Klimt", "by van Gogh", "by le Corbusier", "drawn by a child"]
+topic = ["ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn", "Iä! Iä! Cthulhu fhtagn!", "a Lovecraftian painting of Cthulhu rising"]
+theme = ["cosmic horror", "lovecraftian"]
+styles = ["photorealistic", "book cover art", "impressionism", "cubism", "steam punk", "brutalism", "fractal", "abstract", "cave painting", "art nouveau", "octane render", "ultra realistic", "unreal engine"]
+artist = ["by Claude Monet", "by Salvadore Dali", "by Pablo Picasso", "by Mondrian", "by Gustav Klimt", "by Vincent van Gogh", "by Le Corbusier", "drawn by a child", "by Albrecht Dürer", "by HR Giger", "by Tim Burton", "by Frank Miller", "by William Blake"]
+misc = ["highly detailed", "8k", "elegant", "cinematic lighting", "amazing crisp", "detail no noise", "DOF", "digital illustration", "digital art", "trending on artstation", "DeviantArt", "intricate", "epic", "high quality", "high detail", "close up", "character concept art", "beautiful", "eerie" "intricate details", "bright colors", "strong colors", "deep shadows", "sharp focus"]
 
 img_dir = "img"
 archive_dir = "archive"
 
 
 def generate_prompt():
-    style_string = [] if random.random() < 0.5 else [random.choice(styles)]
-    misc_string = random.sample(misc, random.randint(4, 8))
-    theme_string = [] if random.random() < 0.5 else [random.choice(misc)]
     topic_string = [random.choice(topic)]
-    artist_string = [] if random.random() < 0.5 else [random.choice(artist)]
+    theme_string = [] if random.random() < 0.5 else [random.choice(misc)]
+    misc_string = random.sample(misc, random.randint(2, 8))
 
-    return ", ".join(topic_string + theme_string + misc_string + style_string + artist_string)
+    x = random.random()
+    if x < 0.2:
+        style_or_artist_string = []
+    elif x < 0.6:
+        style_or_artist_string = [random.choice(styles)]
+    else:
+        style_or_artist_string = [random.choice(artist)]
+
+    return ", ".join(topic_string + theme_string + misc_string + style_or_artist_string)
 
 
 def generate_image():
