@@ -35,7 +35,7 @@ def generate_image():
     os.makedirs(img_dir, exist_ok=True)
 
     timestamp = int(time.time())
-    basename = f"{dir}/cthulhu_fhtagn_{timestamp}"
+    basename = f"{img_dir}/cthulhu_fhtagn_{timestamp}"
 
     prompt = generate_prompt()
 
@@ -68,8 +68,12 @@ if __name__ == "__main__":
         for i in range(2000):
             generate_image()
     else:
-        txtname = random.choice(glob.glob(f"{img_dir}/*.txt"))
-        filename = txtname.replace(".txt", ".png")
+        try:
+            txtname = random.choice(glob.glob(f"{img_dir}/*.txt"))
+            filename = txtname.replace(".txt", ".png")
+        except IndexError:
+            _, filename = generate_image()
+            txtname = filename.replace(".png", ".txt")
 
         with open(txtname) as f:
             d = json.loads(f.read())
