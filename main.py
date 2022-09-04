@@ -10,10 +10,10 @@ from twitter import tweet_pic
 
 
 topic = ["ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn", "Iä! Iä! Cthulhu fhtagn!", "a Lovecraftian painting of Cthulhu rising"]
-theme = ["cosmic horror", "lovecraftian"]
+theme = ["cosmic horror", "lovecraftian", "cyclopean architecture"]
 styles = ["photorealistic", "book cover art", "impressionism", "cubism", "steam punk", "brutalism", "fractal", "abstract", "cave painting", "art nouveau", "octane render", "ultra realistic", "unreal engine"]
-artist = ["by Claude Monet", "by Salvadore Dali", "by Pablo Picasso", "by Mondrian", "by Gustav Klimt", "by Vincent van Gogh", "by Le Corbusier", "drawn by a child", "by Albrecht Dürer", "by HR Giger", "by Tim Burton", "by Frank Miller", "by William Blake"]
-misc = ["highly detailed", "8k", "elegant", "cinematic lighting", "amazing crisp", "detail no noise", "DOF", "digital illustration", "digital art", "trending on artstation", "DeviantArt", "intricate", "epic", "high quality", "high detail", "close up", "character concept art", "beautiful", "eerie" "intricate details", "bright colors", "strong colors", "deep shadows", "sharp focus"]
+artist = ["by Claude Monet", "by Salvadore Dali", "by Pablo Picasso", "by Mondrian", "by Gustav Klimt", "by Vincent van Gogh", "by Le Corbusier", "drawn by a child", "by Albrecht Dürer", "by HR Giger", "by Tim Burton", "by Frank Miller", "by William Blake", "by Katsushika Hokusai"]
+misc = ["highly detailed", "8k", "elegant", "cinematic lighting", "amazing crisp", "detail no noise", "DOF", "digital illustration", "digital art", "trending on artstation", "DeviantArt", "intricate", "epic", "high quality", "high detail", "close up", "character concept art", "beautiful", "eerie" "intricate details", "bright colors", "strong colors", "deep shadows", "sharp focus", "grim dark"]
 
 img_dir = "img"
 archive_dir = "archive"
