@@ -2,6 +2,8 @@
 
 ![Example images of Cthulhu](extra/banner.png)
 
+This bot uses Stable Diffusion to tweet a picture of Cthulhu (or one of his friends) each day until the great old one rises. Follow [@ACthulhuADay](https://twitter.com/ACthulhuADay).
+
 ## :gear: Setup
 
 We use the the `diffusers` library from huggingface to download the models released by Stable Diffusion.
