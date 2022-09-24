@@ -2,3 +2,6 @@ __pycache__
 
 img/
 archive/
+legacy/
+
+keys_and_secrets.py
