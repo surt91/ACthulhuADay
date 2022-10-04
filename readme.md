@@ -6,7 +6,8 @@ This bot uses Stable Diffusion to tweet a picture of Cthulhu (or one of his frie
 
 ## :gear: Setup
 
-We use the the `diffusers` library from huggingface to download the models released by Stable Diffusion.
+We use the the `diffusers`  and `transformers` library from huggingface to download the models released by
+Stable Diffusion, as well as a variant of `gpt2` trained on Stable Diffusion prompts.
 This requires a huggingface account, to generate an access token (https://huggingface.co/settings/tokens),
 which is needed in turn to login via `huggingface-cli login`. (The weights can also be downloaded manually
 and the relative path can be passed as `model_id` in `render.py`.)

@@ -1,3 +1,5 @@
+import logging
+
 import tweepy
 
 from keys_and_secrets import keys_and_secrets
@@ -16,4 +18,5 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 
 
 def tweet_pic(path, text=None, reply_to=None):
+    logging.info(f"tweet the {path}: {text}")
     api.update_status_with_media(status=text, filename=path, in_reply_to_status_id=reply_to)
