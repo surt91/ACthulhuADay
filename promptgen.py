@@ -49,7 +49,11 @@ def promptgen_manual(topic_string):
     return prompt
 
 
-def promptgen():
+def promptgen(topic_string=None):
+    if topic_string:
+        prompt = promptgen_ai(topic_string)
+        return prompt
+
     topic_string = random.choice(topic)
 
     if random.random() < 0.5:
