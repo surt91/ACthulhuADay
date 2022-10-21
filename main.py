@@ -50,13 +50,7 @@ def tweet_image(prompt, filename):
     tweet_pic(path=filename, text=prompt)
 
 
-if __name__ == "__main__":
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s -- %(levelname)s :: %(message)s",
-        datefmt="%Y.%m.%dT%H:%M:%S"
-    )
-
+def parse_args():
     parser = argparse.ArgumentParser(description="Generate images")
     parser.add_argument(
         "--batch",
@@ -82,8 +76,30 @@ if __name__ == "__main__":
         default=50,
         help="number of inference steps of Stable Diffusion"
     )
+    parser.add_argument(
+        "-q",
+        "--quiet",
+        action="store_true",
+        help="logging level >= warn"
+    )
 
     args = parser.parse_args()
+
+    return args
+
+
+if __name__ == "__main__":
+    args = parse_args()
+
+    level = logging.INFO
+    if args.quiet:
+        level = logging.WARN
+
+    logging.basicConfig(
+        level=level,
+        format="%(asctime)s -- %(levelname)s :: %(message)s",
+        datefmt="%Y.%m.%dT%H:%M:%S"
+    )
 
     if args.batch or args.topic:
         logging.info(f"generating a batch of {args.num} images, given topic: {args.topic}")
