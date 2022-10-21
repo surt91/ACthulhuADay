@@ -5,7 +5,8 @@ from torch import autocast
 from diffusers import StableDiffusionPipeline
 
 
-model_id = "CompVis/stable-diffusion-v1-4"
+# model_id = "CompVis/stable-diffusion-v1-4"
+model_id = "runwayml/stable-diffusion-v1-5"
 device = "cuda"
 
 logging.info(f"load {model_id}")
